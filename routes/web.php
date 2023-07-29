@@ -29,4 +29,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/home', [\App\Http\Controllers\Homecontroller::class, 'index'])->name('home');
+Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
 require __DIR__.'/auth.php';

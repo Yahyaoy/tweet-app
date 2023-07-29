@@ -15,7 +15,7 @@
     </head>
     <body class="font-sans antialiased">
         <div id="app">
-            <section class="px-8 mt-3" >
+            <section class="px-8 mt-3 mb-10" >
                 <header class="container mx-auto">
                     <h1>
                         <img src="/images/logo.svg"

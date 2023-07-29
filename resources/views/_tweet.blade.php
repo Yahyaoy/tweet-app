@@ -7,7 +7,7 @@
         >
     </div>
     <div>
-        <h5 class="font-bold mb-4">Yahya Khalid</h5>
-        <p class="text-sm">Lorem ipsum dolor sit amet ,dicta esse ex expedita facere in ipsam iste mollitia nam odio officiis praesentium quae quibusdam sapiente ullam unde!</p>
+        <h5 class="font-bold mb-4">{{ $tweet->user->name }}</h5>
+        <p class="text-sm">{{ $tweet->body }}</p>
     </div>
 </div>
