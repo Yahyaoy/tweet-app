@@ -28,6 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/home', [\App\Http\Controllers\Homecontroller::class, 'index'])->name('home');
+Route::get('/tweets', [\App\Http\Controllers\TweetsController::class, 'index'])->name('home');
 Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
 require __DIR__.'/auth.php';
