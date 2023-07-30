@@ -13,26 +13,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+require __DIR__.'/auth.php';
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('can:edit,user');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('can:edit,user');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/tweets', [\App\Http\Controllers\TweetsController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+    Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
+    Route::post('/profiles/{user:username}/follow', [\App\Http\Controllers\FollowsController::class, 'store']);
 });
-Route::get('/profiles/{user:name}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
-
-Route::get('/tweets', [\App\Http\Controllers\TweetsController::class, 'index'])->name('home');
-Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
+Route::get('/profiles/{user:username}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
 
 
-Route::post('/profiles/{user:name}/follow', [\App\Http\Controllers\FollowsController::class, 'store']);
-
-require __DIR__.'/auth.php';

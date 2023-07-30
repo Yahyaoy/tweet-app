@@ -9,7 +9,7 @@
 
         <footer class="flex justify-between">
             <img
-                src="{{ current_user()->avatar }}"
+                src="{{ asset('storage/' . auth()->user()->avatar) }}"
                 alt=""
                 class="rounded-full mr-2"
                 width="40"

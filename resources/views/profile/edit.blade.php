@@ -9,7 +9,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <div class="bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl p-4 sm:p-8">
-                    @include('profile.partials.update-profile-information-form')
+                    @include('profile.partials.update-profile-information-form', [
+                    'user' => $user
+                    ])
                 </div>
             </div>
 
