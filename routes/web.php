@@ -23,14 +23,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('can:edit,user');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('can:edit,user');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/profiles/{user:name}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
 
 Route::get('/tweets', [\App\Http\Controllers\TweetsController::class, 'index'])->name('home');
 Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
 
-Route::get('/profiles/{user:name}', [\App\Http\Controllers\ProfilesController::class, 'show'])->name('profile');
+
 Route::post('/profiles/{user:name}/follow', [\App\Http\Controllers\FollowsController::class, 'store']);
+
 require __DIR__.'/auth.php';
