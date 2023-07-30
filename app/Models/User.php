@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -43,29 +43,25 @@ class User extends Authenticatable
     ];
 
     public function getAvatarAttribute(){
-        return "https://i.pravatar.cc/40?u=".auth()->id();
+        return "https://i.pravatar.cc/200?u=". $this->email;
     }
 
     public function timeline(){
         $friends = $this->follows()->pluck('id');
 
-        return Tweet::whereIn('user_id', $friends)
+        return
+            Tweet::whereIn('user_id', $friends)
             ->orWhere('user_id', $this->id)
             ->latest()->get();
     }
 
     public function tweets()
     {
-        return $this->hasMany(Tweet::class);
+        return $this->hasMany(Tweet::class)->latest();
     }
 
-    public function follow(User $user)
+    public function path()
     {
-        return $this->follows()->save($user);
-    }
-
-    public function follows()
-    {
-        return $this->belongsToMany(User::class,'follows','user_id','following_user_id');
+        return route('profile', $this->name);
     }
 }
