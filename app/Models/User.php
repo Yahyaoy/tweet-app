@@ -31,9 +31,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-//    public function avatar(){
-//        return $this->avatar;
-//    }
+    public function getAvatarAttribute($value){
+        $defaultImage = '/images/default-avatar.jpeg';
+        $avatarPath = $value ? "storage/".$value : $defaultImage;
+        return asset($avatarPath);
+    }
 
     public function timeline(){
         $friends = $this->follows()->pluck('id');

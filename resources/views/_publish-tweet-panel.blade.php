@@ -9,11 +9,10 @@
 
         <footer class="flex justify-between">
             <img
-                src="{{ asset('storage/' . auth()->user()->avatar) }}"
+                src="{{ auth()->user()->avatar }} "
                 alt=""
                 class="rounded-full mr-2"
-                width="40"
-                height="40"
+               style="width: 44px; height: 44px;"
             >
             <button type="submit"
                     class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white"
@@ -23,6 +22,6 @@
         </footer>
     </form>
     @error('body')
-    <p class="text-red-600 text-sm mt-3">{{ $message }}</p>
+        <p class="text-red-600 text-sm mt-3">{{ $message }}</p>
     @enderror
 </div>
