@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tweets', [\App\Http\Controllers\TweetsController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
     Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
     Route::post('/profiles/{user:username}/follow', [\App\Http\Controllers\FollowsController::class, 'store']);
-    Route::get('/explore', [\App\Http\Controllers\ExploreController::class, 'show'])->name('explore');
+    Route::get('/explore', \App\Http\Controllers\ExploreController::class)->name('explore');
 });
 Route::get('/profiles/{user:username}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
 

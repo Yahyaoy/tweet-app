@@ -30,7 +30,6 @@
         <li>
             <form method="POST" action="/logout">
                 @csrf
-
                 <button class="font-bold text-lg">Logout</button>
             </form>
         </li>

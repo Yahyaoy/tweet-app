@@ -22,7 +22,7 @@
             <div class="flex">
                 @can('edit', $user)
                     <a href="{{ route('profile.edit') }}"
-                       class="rounded-full border border-gray-300 py-2 px-4 text-black text-xs mr-2"
+                       class="rounded-full border border-blue-300 py-2 px-4 text-black text-xs mr-2"
                     >
                         Edit Profile
                     </a>
@@ -33,7 +33,7 @@
         </div>
 
         <p class="text-sm">
-            The name’s Bugs. Bugs Bunny. Don’t wear it out. Bugs is an anthropomorphic gray
+            The name’s Bugs. Bugs Bunny. Don’t wear it out. Bugs is an anthropomorphic blue
             and white rabbit or hare who is famous for his flippant, insouciant personality.
             He is also characterized by a Brooklyn accent, his portrayal as a trickster,
             and his catch phrase "Eh...What's up, doc?"
@@ -43,7 +43,7 @@
     </header>
 
     @include ('_timeline', [
-        'tweets' => $user->tweets
+        'tweets' => $tweets
     ])
 
 </x-app-layout>

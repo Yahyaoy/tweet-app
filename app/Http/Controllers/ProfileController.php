@@ -19,7 +19,8 @@ class ProfileController extends Controller
     public function show(User $user)
     {
         return view('profile.show', [
-            'user' => $user
+            'user' => $user,
+            'tweets' => $user->tweets()->paginate(30),
         ]);
     }
     public function edit()

@@ -1,8 +1,11 @@
 <div class="border border-blue-400 rounded-lg px-8 py-6 mb-8">
     <form method="POST" action="/tweets">
         @csrf
-                    <textarea name="body"
+                    <textarea id="body"
+                              name="body"
                               class="w-full"
+                              placeholder="What's up doc?"
+                              required
                     >
                     </textarea>
         <hr class="my-4">
@@ -15,7 +18,7 @@
                style="width: 44px; height: 44px;"
             >
             <button type="submit"
-                    class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white"
+                    class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow py-2 px-2 text-white"
             >
                 Tweet now
             </button>
