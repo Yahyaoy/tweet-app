@@ -5,7 +5,7 @@
                 src="{{  $tweet->user->avatar }}"
                 alt=""
                 class="rounded-full mr-2"
-                style="width: 66px;height: 66px;"
+                style="width: 33px;height: 33px;"
             >
         </a>
     </div>
@@ -15,11 +15,18 @@
                 {{ $tweet->user->name }}
             </a>
         </h5>
+            <p class="text-sm">{{ $tweet->body }}</p>
+            <div class="m-5">
+                @if($tweet->tweet_image!=null)
+                <img src="{{ asset('storage/'.$tweet->tweet_image) }}"
+                     alt="NO THING"
+                     class="rounded-xl ml-6" width="450" height="250">
+               @endif
+        </div>
 
-        <p class="text-sm">{{ $tweet->body }}</p>
 
         @auth
-            <x-like-buttons :tweet="$tweet" />
+            <x-like-buttons :tweet="$tweet"/>
         @endauth
     </div>
 </div>

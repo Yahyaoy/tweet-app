@@ -53,7 +53,6 @@
                 <x-input-label for="coverImage" :value="__('Cover Image')"/>
                 <div class="flex">
                     <x-text-input name="coverImage" type="file" :value="old(auth()->user()->coverImage)"/>
-{{--                    @dd(asset( $user->coverImage))--}}
                     <img src="{{ asset($user->coverImage) }}" alt="NO THING"
                          class="rounded-xl ml-6" width="100">
                 </div>

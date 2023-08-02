@@ -4,6 +4,7 @@
             <img src="{{ $user->coverImage }}"
                  alt=""
                  class="mb-2"
+                 style=" width: 690px; height:267px"
             >
 
             <img src="{{ $user->avatar }}"
