@@ -1,7 +1,7 @@
 <x-app-layout>
     <header class="mb-6 relative">
         <div class="relative">
-            <img src="/images/default-profile-banner.jpg"
+            <img src="{{ $user->coverImage }}"
                  alt=""
                  class="mb-2"
             >
@@ -31,12 +31,9 @@
                 <x-follow-button :user="$user"></x-follow-button>
             </div>
         </div>
-
-        <p class="text-sm">
-            The name’s Bugs. Bugs Bunny. Don’t wear it out. Bugs is an anthropomorphic blue
-            and white rabbit or hare who is famous for his flippant, insouciant personality.
-            He is also characterized by a Brooklyn accent, his portrayal as a trickster,
-            and his catch phrase "Eh...What's up, doc?"
+{{--        <span class="text-lg font-bold">Bio: </span>--}}
+        <p class="inline">
+            {{ $user->bio }}
         </p>
 
 

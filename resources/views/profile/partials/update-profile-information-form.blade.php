@@ -33,13 +33,31 @@
             </div>
 
             <div>
+                <x-input-label for="bio" :value="__('Bio')"/>
+                <x-text-input id="bio" name="bio" type="text" class="mt-1 block w-full"
+                              :value="old('name', auth()->user()->bio)" required autofocus autocomplete="bio"/>
+                <x-input-error class="mt-2" :messages="$errors->get('bio')"/>
+            </div>
+
+            <div>
                 <x-input-label for="avatar" :value="__('Avatar')"/>
                 <div class="flex">
-                    <x-text-input name="avatar" type="file" :value="old('avatar', auth()->user()->avatar)"/>
-                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="NO THING"
-                         class="rounded-xl ml-6" width="100">
+                    <x-text-input name="avatar" type="file" :value="old(auth()->user()->avatar)"/>
+                    <img src="{{ asset($user->avatar) }}" alt="NO THING"
+                         class="rounded-xl ml-6" width="50">
                 </div>
                 <x-input-error class="mt-2" :messages="$errors->get('avatar')"/>
+            </div>
+
+            <div>
+                <x-input-label for="coverImage" :value="__('Cover Image')"/>
+                <div class="flex">
+                    <x-text-input name="coverImage" type="file" :value="old(auth()->user()->coverImage)"/>
+{{--                    @dd(asset( $user->coverImage))--}}
+                    <img src="{{ asset($user->coverImage) }}" alt="NO THING"
+                         class="rounded-xl ml-6" width="100">
+                </div>
+                <x-input-error class="mt-2" :messages="$errors->get('coverImage')"/>
             </div>
 
             <div>

@@ -36,6 +36,11 @@ class User extends Authenticatable
         $avatarPath = $value ? "storage/".$value : $defaultImage;
         return asset($avatarPath);
     }
+    public function getCoverImageAttribute($value){
+        $defaultImage = '/images/default-profile-banner.jpg';
+        $coverPath = $value ? "storage/".$value : $defaultImage;
+        return asset($coverPath);
+    }
 
     public function timeline(){
         $friends = $this->follows()->pluck('id');

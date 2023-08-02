@@ -46,14 +46,18 @@ class ProfileController extends Controller
         $attributes = \request()->validate([
             'username' => ['string', 'max:255', 'required'],
             'name' => ['string', 'max:255', 'required'],
+            'bio' => ['string'],
             'avatar' =>  ['image'],
+            'coverImage' =>  ['image'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore(\auth()->user()->id)],
         ]);
 //        $request->user()->fill($request->validated());
         if (request()->hasFile('avatar')) {
             $attributes['avatar'] = request()->file('avatar')->store('avatars');
         }
-
+        if (request()->hasFile('coverImage')) {
+            $attributes['coverImage'] = request()->file('coverImage')->store('coverImages');
+        }
         $user->update($attributes);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
