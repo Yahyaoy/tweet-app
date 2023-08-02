@@ -7,8 +7,10 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+{{--        <script src="https://unpkg.com/turbolinks"></script>--}}
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -63,4 +65,6 @@
         {{ $slot }}
     </div>
     </body>
+
+
 </htm>
