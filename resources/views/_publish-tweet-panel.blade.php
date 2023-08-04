@@ -3,12 +3,13 @@
         @csrf
         <textarea id="body"
                   name="body"
-                  class="w-full"
+                  class="w-full p-3"
                   placeholder="What's up doc?"
                   required
-        >
-                    </textarea>
-            <x-text-input name="tweet_image" type="file"/>
+                  maxlength="255"
+        ></textarea>
+        <div class="text-sm text-blue-500 mb-5"><span id="remainingChars">255</span> <span>characters remaining</span></div>
+        <x-text-input name="tweet_image" type="file"/>
         <hr class="my-4">
 
         <footer class="flex justify-between">
@@ -29,3 +30,20 @@
     <p class="text-red-600 text-sm mt-3">{{ $message }}</p>
     @enderror
 </div>
+
+<script>
+    const bodyTextarea = document.getElementById('body');
+    const remainingCharsSpan = document.getElementById('remainingChars');
+    const maxChars = 255;
+
+    // Add input event listener to the textarea
+    bodyTextarea.addEventListener('input', updateRemainingChars);
+
+    function updateRemainingChars() {
+        const currentChars = bodyTextarea.value.length;
+        const remainingChars = maxChars - currentChars;
+
+        // Update the remaining characters count in the DOM
+        remainingCharsSpan.textContent = remainingChars;
+    }
+</script>
