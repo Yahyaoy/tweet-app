@@ -60,4 +60,9 @@ trait Likable
             ]
         );
     }
+    public function unlike(Tweet $tweet)
+    {
+//        dd('unlike');
+        return $this->likes()->delete($tweet);
+    }
 }
